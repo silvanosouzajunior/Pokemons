@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.7.1)
+  - LLSpinner (0.0.1)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - LLSpinner
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - LLSpinner
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  LLSpinner: 0ed607d59b3a447ddd157c29ef684de7a5a285ad
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: 3bd72bf87eeeb522e1c67b06d1b2dd7bd72a9e4d
+
+COCOAPODS: 1.5.0
