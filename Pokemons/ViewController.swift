@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        DataRequester.getPokemons(completion: { result in })
+        DataRequester.getPokemons(completion: { error, result  in })
     }
 
     override func didReceiveMemoryWarning() {

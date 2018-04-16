@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>PokemonsTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2C60E6DB20852029006C1F5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C60E6EF2085202B006C1F5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C60E6FA2085202B006C1F5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>
