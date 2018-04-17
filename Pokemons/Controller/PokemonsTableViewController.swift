@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import LLSpinner
 
 class PokemonsTableViewController: UITableViewController {
     
+    let dataManager = DataManager()
     var pokemons = [Pokemon]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updatePokemonsInfo()
+        dataManager.delegate = self
+        dataManager.fetchPokemons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,14 +26,15 @@ class PokemonsTableViewController: UITableViewController {
     }
 }
 
-extension PokemonsTableViewController {
-    private func updatePokemonsInfo() {
-        DataRequester.getPokemons(completion: { error, result  in
-            if let pokemons = result {
-                self.pokemons = pokemons
-                self.tableView.reloadData()
-            }
-        })
+extension PokemonsTableViewController: DataManagerDelegate {
+    func didUpdatePokemonStats(stats: [String : Int]) {
+        LLSpinner.stop()
+        self.performSegue(withIdentifier: "ShowPokemonDetails", sender: stats)
+    }
+    
+    func didUpdatePokemons(pokemons: [Pokemon]) {
+        self.pokemons = pokemons
+        self.tableView.reloadData()
     }
 }
 
@@ -50,5 +54,22 @@ extension PokemonsTableViewController {
         cell.pokemonName.text = pokemon.name
         
         return cell
+    }
+}
+
+extension PokemonsTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        LLSpinner.spin()
+        let pokemon = pokemons[indexPath.row]
+        dataManager.fetchPokemonDetails(pokemon: pokemon)
+    }
+}
+
+extension PokemonsTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPokemonDetails" {
+            let destinationViewController = segue.destination as! PokemonDetailsTableViewController
+            destinationViewController.pokemonStats = sender as! [String: Int]
+        }
     }
 }
