@@ -10,7 +10,10 @@ import UIKit
 
 class PokemonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var pokemonName: UILabel!
+    
+    var favoriteButtonTapped: ((PokemonTableViewCell) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +25,8 @@ class PokemonTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        favoriteButtonTapped?(self)
+    }
 }

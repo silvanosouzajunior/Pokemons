@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dpO-hM-u2N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tvP-BQ-Os6">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <tableViewController id="uvh-kz-RgT" customClass="PokemonsTableViewController" customModule="Pokemons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v50-Li-nrN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonCell" rowHeight="75" id="8EE-pd-zhs" customClass="PokemonTableViewCell" customModule="Pokemons" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PokemonCell" rowHeight="75" id="8EE-pd-zhs" customClass="PokemonTableViewCell" customModule="Pokemons" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8EE-pd-zhs" id="eOX-N8-shp">
@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPx-6I-sEv">
-                                            <rect key="frame" x="16" y="11" width="268" height="53"/>
+                                            <rect key="frame" x="16" y="11" width="274" height="53"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="53" id="fpy-jU-th1"/>
                                             </constraints>
@@ -35,14 +35,29 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdi-P1-68g">
+                                            <rect key="frame" x="305" y="9" width="55" height="55"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="CfG-Ek-21X"/>
+                                                <constraint firstAttribute="width" constant="55" id="cAn-Da-TJS"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                            <state key="normal" image="star"/>
+                                            <connections>
+                                                <action selector="favoriteButtonTapped:" destination="8EE-pd-zhs" eventType="touchUpInside" id="b0v-wd-4Ls"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="XPx-6I-sEv" secondAttribute="trailing" constant="75" id="OeB-7s-ZPG"/>
+                                        <constraint firstItem="Gdi-P1-68g" firstAttribute="leading" secondItem="XPx-6I-sEv" secondAttribute="trailing" constant="15" id="6Pp-6z-g5i"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gdi-P1-68g" secondAttribute="trailing" constant="15" id="Cko-CI-GYB"/>
                                         <constraint firstItem="XPx-6I-sEv" firstAttribute="leading" secondItem="eOX-N8-shp" secondAttribute="leadingMargin" id="RjP-6B-IB1"/>
                                         <constraint firstItem="XPx-6I-sEv" firstAttribute="centerY" secondItem="eOX-N8-shp" secondAttribute="centerY" id="VqG-DG-8sI"/>
+                                        <constraint firstItem="Gdi-P1-68g" firstAttribute="centerY" secondItem="eOX-N8-shp" secondAttribute="centerY" id="v0G-uq-EuH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favoriteButton" destination="Gdi-P1-68g" id="Zh7-g3-QXV"/>
                                     <outlet property="pokemonName" destination="XPx-6I-sEv" id="bhg-2i-aR2"/>
                                 </connections>
                             </tableViewCell>
@@ -59,18 +74,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgF-vJ-hv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="41"/>
+            <point key="canvasLocation" x="464.80000000000001" y="40.64039408866995"/>
         </scene>
         <!--Pokemon Details Table View Controller-->
         <scene sceneID="fWp-98-Ykc">
             <objects>
                 <tableViewController id="B0w-W3-JpE" customClass="PokemonDetailsTableViewController" customModule="Pokemons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="c0z-Gr-SdB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonDetailSegue" rowHeight="75" id="GDU-jE-EfP" customClass="PokemonDetailTableViewCell" customModule="Pokemons" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PokemonDetailSegue" rowHeight="75" id="GDU-jE-EfP" customClass="PokemonDetailTableViewCell" customModule="Pokemons" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GDU-jE-EfP" id="Qc5-ZF-Cbg">
@@ -121,15 +136,37 @@
             </objects>
             <point key="canvasLocation" x="1189.5999999999999" y="40.929535232383813"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="1LE-aS-Yko">
+            <objects>
+                <tabBarController id="tvP-BQ-Os6" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uhK-Wf-lGA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dpO-hM-u2N" kind="relationship" relationship="viewControllers" id="paL-az-eme"/>
+                        <segue destination="dpO-hM-u2N" kind="relationship" relationship="viewControllers" id="CLx-X2-L07"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jb-uF-SYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1332" y="41"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="AzQ-B5-HNl">
             <objects>
                 <navigationController id="dpO-hM-u2N" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ylr-E7-315">
+                    <tabBarItem key="tabBarItem" title="Item" id="Kw9-Rl-O77"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ylr-E7-315">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.92941176470588238" green="0.25882352941176467" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -143,4 +180,10 @@
             <point key="canvasLocation" x="-486" y="41"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star" width="85" height="85"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="paL-az-eme"/>
+    </inferredMetricsTieBreakers>
 </document>

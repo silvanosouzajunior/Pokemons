@@ -14,7 +14,7 @@ class DataRequesterTests: XCTestCase {
     func testGettingPokemonsJSON() {
         let ex = expectation(description: "Expecting a JSON data not nil")
         
-        DataRequester.getPokemons(completion: { (error, result) in
+        ServiceDataRequester.shared.getPokemons(completion: { (error, result) in
             XCTAssertNil(error)
             XCTAssertNotNil(result)
             ex.fulfill()

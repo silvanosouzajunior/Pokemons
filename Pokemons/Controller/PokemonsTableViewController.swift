@@ -18,11 +18,34 @@ class PokemonsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         dataManager.delegate = self
+        self.setupTabBarController()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         dataManager.fetchPokemons()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension PokemonsTableViewController {
+    private func setupTabBarController() {
+        self.tabBarController?.tabBar.items?.first?.title = "Pokemons";
+        self.tabBarController?.tabBar.items?.first?.image = #imageLiteral(resourceName: "pokeball")
+        self.tabBarController?.tabBar.items?.last?.title = "Favorites";
+        self.tabBarController?.tabBar.items?.last?.image = #imageLiteral(resourceName: "favoriteTab")
+    }
+    
+    private func updateFavoriteCellButton(cell: PokemonTableViewCell, pokemon: Pokemon) {
+        if pokemon.isFavorite {
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "star_filled"), for: .normal)
+        } else {
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "star"), for: .normal)
+        }
     }
 }
 
@@ -33,8 +56,17 @@ extension PokemonsTableViewController: DataManagerDelegate {
     }
     
     func didUpdatePokemons(pokemons: [Pokemon]) {
-        self.pokemons = pokemons
+        self.updateTableWithPokemons(pokemons)
         self.tableView.reloadData()
+    }
+    
+    private func updateTableWithPokemons(_ localPokemons: [Pokemon]) {
+        if self.tabBarController?.selectedIndex == 1 {
+            self.pokemons = localPokemons.filter({ $0.isFavorite })
+        } else {
+            self.pokemons = localPokemons
+        }
+        self.pokemons.sort { $0.url ?? "" < $1.url ?? ""}
     }
 }
 
@@ -52,6 +84,12 @@ extension PokemonsTableViewController {
         
         let pokemon = self.pokemons[indexPath.row]
         cell.pokemonName.text = pokemon.name
+        self.updateFavoriteCellButton(cell: cell, pokemon: pokemon)
+        
+        cell.favoriteButtonTapped = { (cell) in
+            pokemon.isFavorite = !pokemon.isFavorite
+            self.updateFavoriteCellButton(cell: cell, pokemon: pokemon)
+        }
         
         return cell
     }
